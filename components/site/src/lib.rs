@@ -54,7 +54,7 @@ impl Site {
         config.load_extra_syntaxes(path)?;
 
         let tpl_glob =
-            format!("{}/{}", path.to_string_lossy().replace("\\", "/"), "templates/**/*.*ml");
+            format!("{}/{}", path.to_string_lossy().replace("\\", "/"), "templates/**/*.*ml"); //"
         // Only parsing as we might be extending templates from themes and that would error
         // as we haven't loaded them yet
         let mut tera =
@@ -71,7 +71,7 @@ impl Site {
 
             let theme_tpl_glob = format!(
                 "{}/{}",
-                path.to_string_lossy().replace("\\", "/"),
+                path.to_string_lossy().replace("\\", "/"),       // "
                 format!("themes/{}/templates/**/*.*ml", theme)
             );
             let mut tera_theme = Tera::parse(&theme_tpl_glob)
@@ -165,7 +165,7 @@ impl Site {
     /// Reads all .md files in the `content` directory and create pages/sections
     /// out of them
     pub fn load(&mut self) -> Result<()> {
-        let base_path = self.base_path.to_string_lossy().replace("\\", "/");
+        let base_path = self.base_path.to_string_lossy().replace("\\", "/"); // "
         let content_glob = format!("{}/{}", base_path, "content/**/*.md");
 
         let (section_entries, page_entries): (Vec<_>, Vec<_>) = glob(&content_glob)
